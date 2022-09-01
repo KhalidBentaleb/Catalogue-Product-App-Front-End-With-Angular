@@ -1,0 +1,24 @@
+<mat-toolbar>
+    <mat-toolbar-row class="justify-content-between" style="background: black;">
+        <div class="row mr-2">
+            <p style="color: #F3F5FF;">Product Panel</p>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-list>
+    <mat-list-item routerLink="/productpanel/dashboard" routerLinkActive="active">
+        <mat-icon>home</mat-icon> Dashboard
+    </mat-list-item>
+    <mat-list-item routerLink="/productpanel/accessmanagement" [hidden]="!isAdmin" routerLinkActive="active">
+        <mat-icon>supervisor_account</mat-icon> Users
+    </mat-list-item>
+    <mat-list-item routerLink="/productpanel/category" [hidden]="!isAdmin" routerLinkActive="active">
+        <mat-icon>extension</mat-icon> Categories
+    </mat-list-item>
+    <mat-list-item routerLink="/productpanel/product" [hidden]="!isAdmin" routerLinkActive="active">
+        <mat-icon>shopping_cart</mat-icon> Products
+    </mat-list-item>
+    <mat-list-item routerLink="/productpanel/invoice" [hidden]="!isAdmin" routerLinkActive="active">
+        <mat-icon> cloud_download</mat-icon> Invoices
+    </mat-list-item>
+</mat-list>

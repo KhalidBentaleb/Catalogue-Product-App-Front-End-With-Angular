@@ -1,0 +1,50 @@
+<app-columnone>
+
+    <div class="container">
+        <!-- main content -->
+        <div class="tab-content mt-3" id="myTabContent">
+            <!-- Category table -->
+            <div class="tab-pane fade show active">
+                <div class="mb-3 float-right">
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-info" data-toggle="modal" (click)="onAddNewCategory()">
+                  <i class="fa fa-plus"></i> New Category
+                </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" (click)="getCategories(true)" class="btn btn-info">
+                  <i *ngIf="refreshing" class="fa fa-refresh fa-spin"></i><i *ngIf="!refreshing" class="fa fa-refresh"></i>
+                </button>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead class="table-borderless">
+                        <tr class="text-center">
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let appCategory of categories">
+                        <tr class="text-center">
+                            <td>
+                                <div class="d-flex justify-content-center align-items-center rounded">
+                                    <img class="rounded" height="60" width="60" src="{{appCategory?.categoryImageUrl}}" alt="">
+                                </div>
+                            </td>
+                            <td>{{appCategory?.name}}</td>
+                            <td class="">
+                                <div class="btn-group">
+                                    <button class="btn btn-outline-info" (click)="onEditCategory(appCategory)"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-outline-danger" (click)="onDeleteCategory(appCategory)"><i
+                          class="fa fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</app-columnone>

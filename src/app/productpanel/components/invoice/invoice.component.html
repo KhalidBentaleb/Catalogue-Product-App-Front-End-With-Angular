@@ -1,0 +1,82 @@
+<app-columnone>
+
+    <div class="container">
+        <!-- main content -->
+        <div class="tab-content mt-3" id="myTabContent">
+            <!-- Invoice table -->
+            <div class="tab-pane fade show active">
+                <div class="mb-3 float-right">
+                    <div class="btn-group">
+                        <button type="button" (click)="getInvoices(true)" class="btn btn-info">
+                  <i *ngIf="refreshing" class="fa fa-refresh fa-spin"></i><i *ngIf="!refreshing" class="fa fa-refresh"></i>
+                </button>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead class="table-borderless">
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>Total</th>
+                            <th>Download</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let appInvoice of invoices">
+                        <tr class="text-center">
+                            <td>{{appInvoice?.id}}</td>
+                            <td>{{appInvoice?.total}}</td>
+                            <td class="">
+                                <div class="btn-group">
+                                    <button class="btn btn-outline-info" (click)="onDonwloadInvoice(appInvoice)">
+                                        <i class="fa fa-download"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="">
+                                <div class="btn-group">
+                                    <button class="btn btn-outline-danger" (click)="onDeleteInvoice(appInvoice)">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="display: none;">
+        <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+            <h2>Invoice #</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Cart</th>
+                        <th style="width: 40%;">Quantity</th>
+                        <th style="width: 30%;">Price</th>
+                        <th style="width: 30%;"><i class="fa fa-shopping-cart"></i></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let appCart of carts">
+                        <td style="width: 25%;">{{appCart?.productName}}</td>
+                        <td style="width: 40%;">{{appCart?.quantity}}</td>
+                        <td style="width: 30%;">{{appCart?.productPrice}}</td>
+                        <td style="width: 30%;">{{appCart?.quantityPrice}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <p>Total
+                <span class="price" style="color:black">
+                <b>{{totalPrice}} {{totalCurrency}}</b>
+            </span>
+            </p>
+        </kendo-pdf-export>
+        <div class="example-config">
+            <button kendo-button (click)="pdf.saveAs('invoice.pdf')" id="create-invoice"></button>
+        </div>
+    </div>
+
+</app-columnone>

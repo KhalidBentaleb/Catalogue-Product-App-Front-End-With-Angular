@@ -1,0 +1,14 @@
+<app-columnone>
+    <div class="row">
+        <div class="column" *ngFor="let appCategory of categories">
+            <div class="card" (click)="onSelectCategory(appCategory)">
+                <img src="{{appCategory?.categoryImageUrl}}" alt="Avatar" class="rounded" height="200" width="267">
+                <br>
+                <div class="container">
+                    <h4><b>{{appCategory?.name}}</b></h4>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</app-columnone>

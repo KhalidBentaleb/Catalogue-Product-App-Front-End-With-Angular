@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">New User</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="">
+        <form #newUserForm="ngForm" (ngSubmit)="onAddNewUser(newUserForm)">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" required ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" required ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" required ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" required ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="authority">Role</label>
+                <select name="role" required ngModel="ROLE_USER" class="form-control">
+            <option value="ROLE_USER">USER</option>
+            <option value="ROLE_ADMIN">ADMIN</option>
+            </select>
+            </div>
+            <button type="submit" style="display: none;" id="new-user-save"></button>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" (click)="saveNewUser()" [disabled]="newUserForm.invalid" class="btn btn-secondary"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp; Save changes</button>
+</div>

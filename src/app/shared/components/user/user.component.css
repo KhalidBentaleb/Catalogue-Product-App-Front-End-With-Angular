@@ -1,0 +1,79 @@
+.user-button {
+    background-color: black;
+    box-shadow: none;
+    margin-left: 16px;
+    @media (max-width: $small) {
+        margin-top: 0;
+    }
+}
+
+.user-button__icon {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.user-button__icon:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.user-menu-title {
+    padding: 16px 48px 0 16px;
+    margin-bottom: 4px;
+}
+
+.user-menu-title__name {
+    margin-bottom: 4px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #4A4A4A;
+}
+
+.user-menu-title__link {
+    color: black;
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.user-menu-icon {
+    color: #B9B9B9;
+    margin-right: 16px;
+    opacity: .8;
+}
+
+.sign-button-wrapper {
+    text-align: center;
+    padding: 8px 0 16px 0;
+    width: 100%;
+}
+
+.sign-button {
+    border: 1px solid;
+    color: black;
+    width: 80%;
+}
+
+.user-menu__item-title {
+    color: #B9B9B9;
+}
+
+.user-menu__item-title:hover {
+    color: #4A4A4A;
+    background-color: #F3F5FF;
+}
+
+.user-menu__item-title:hover .user-menu-icon {
+    color: black;
+}
+
+.button-img {
+    border: 0px solid #ddd;
+    border-radius: 65px;
+    background-color: #f7f7f7;
+    box-shadow: none;
+    display: inline-block
+}
+
+.button-img:hover {
+    border: 0px solid #ddd;
+    /* box-shadow: 0 0 2px 1px #b6931f; */
+}

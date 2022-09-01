@@ -1,0 +1,56 @@
+<app-columnone>
+
+    <div class="container">
+        <!-- main content -->
+        <div class="tab-content mt-3" id="myTabContent">
+            <!-- Product table -->
+            <div class="tab-pane fade show active">
+                <div class="mb-3 float-right">
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-info" data-toggle="modal" (click)="onAddNewProduct()">
+                  <i class="fa fa-plus"></i> New Product
+                </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" (click)="getProducts(true)" class="btn btn-info">
+                  <i *ngIf="refreshing" class="fa fa-refresh fa-spin"></i><i *ngIf="!refreshing" class="fa fa-refresh"></i>
+                </button>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead class="table-borderless">
+                        <tr class="text-center">
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Currency</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let appProduct of products">
+                        <tr class="text-center">
+                            <td>
+                                <div class="d-flex justify-content-center align-items-center rounded">
+                                    <img class="rounded" height="60" width="60" src="{{appProduct?.productImageUrl}}" alt="">
+                                </div>
+                            </td>
+                            <td>{{appProduct?.name}}</td>
+                            <td>{{appProduct?.categoryName}}</td>
+                            <td>{{appProduct?.price}}</td>
+                            <td>{{appProduct?.currency}}</td>
+                            <td class="">
+                                <div class="btn-group">
+                                    <button class="btn btn-outline-info" (click)="onEditProduct(appProduct)"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-outline-danger" (click)="onDeleteProduct(appProduct)"><i
+                          class="fa fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</app-columnone>

@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Edit {{editCategory?.name}}</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="">
+        <form #editCategoryForm="ngForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" required [(ngModel)]="editCategory.name" class="form-control form-control-sm">
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Category Picture </span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" accept="image/*" name="categoryImage" (change)="onCategoryImageChange($event)" class="custom-file-input">
+                    <label class="custom-file-label">
+                        <span [hidden]="!fileName">{{fileName}}</span>
+                        <span [hidden]="fileName">Choose File</span>
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" (click)="onUpdateCategory()" [disabled]="editCategoryForm.invalid" class="btn btn-secondary"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp; Save changes</button>
+</div>

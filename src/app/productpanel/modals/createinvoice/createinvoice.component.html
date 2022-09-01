@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Invoice # {{invoiceId}}</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="">
+        <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Cart</th>
+                        <th style="width: 40%;">Quantity</th>
+                        <th style="width: 28%;">Price</th>
+                        <th style="width: 30%;"><i class="fa fa-shopping-cart"></i></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let appCart of carts">
+                        <td style="width: 25%;">{{appCart?.productName}}</td>
+                        <td style="width: 40%;">{{appCart?.quantity}}</td>
+                        <td style="width: 28%;">{{appCart?.productPrice}}</td>
+                        <td style="width: 30%;">{{appCart?.quantityPrice}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <p>Total
+                <span class="price" style="color:black">
+                <b>{{totalPrice}} {{totalCurrency}}</b>
+            </span>
+            </p>
+        </kendo-pdf-export>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+    <button type="button" kendo-button (click)="pdf.saveAs('invoice.pdf')" class="btn btn-secondary">Create invoice</button>
+</div>

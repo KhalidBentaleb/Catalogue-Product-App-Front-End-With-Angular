@@ -1,0 +1,65 @@
+<app-columnone>
+    <div class="row">
+        <div class="col-75">
+            <div class="row">
+                <div class="col-md-3" style="width: 33.33%;" *ngFor="let appProduct of products">
+                    <div class="ibox">
+                        <div class="ibox-content product-box active">
+                            <div class="product-imitation">
+                                <img src="{{appProduct?.productImageUrl}}" alt="Denim Jeans" class="rounded" height="200" width="255">
+                            </div>
+                            <div class="product-desc">
+                                <span class="product-price">
+                                {{appProduct?.price}} {{appProduct?.currency}}
+                            </span>
+                                <div class="m-t" style="display: flex;">
+                                    <input (change)="changeInput($event)" type="text" name="quantity" #quantity placeholder="Quantity" required class="form-control form-control-sm w-50">
+                                    <button (click)="addToCart(appProduct)" class="btn btn-dark btn-sm ml-2">Add to Cart </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-25">
+            <div class="container mt-5">
+                <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">Cart</th>
+                                <th style="width: 40%;">Quantity</th>
+                                <th style="width: 30%;">Price</th>
+                                <th style="width: 30%;"><i class="fa fa-shopping-cart"></i></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let appCart of carts">
+                                <td style="width: 25%;">{{appCart?.productName}}</td>
+                                <td style="width: 40%;">{{appCart?.quantity}}</td>
+                                <td style="width: 30%;">{{appCart?.productPrice}}</td>
+                                <td style="width: 30%;">{{appCart?.quantityPrice}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <p>Total
+                        <span class="price" style="color:black">
+                            <b>{{totalPrice}} {{totalCurrency}}</b>
+                        </span>
+                    </p>
+                </kendo-pdf-export>
+                <div class="example-config">
+                    <!-- <button style="float: right;" kendo-button (click)="pdf.saveAs('invoice.pdf')" class="btn btn-dark btn-sm mt-3">
+                        Create Invoice
+                    </button> -->
+                    <button style="float: right;" kendo-button (click)="createInvoice()" class="btn btn-dark btn-sm mt-3">
+                        Create Invoice
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-columnone>

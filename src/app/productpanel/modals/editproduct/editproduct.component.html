@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Edit {{editProduct?.name}}</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="">
+        <form #editProductForm="ngForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" required [(ngModel)]="editProduct.name" class="form-control form-control-sm">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" name="price" required [(ngModel)]="editProduct.price" class="form-control form-control-sm">
+            </div>
+            <div class="form-group">
+                <label for="currency">Currency</label>
+                <input type="text" name="currency" required [(ngModel)]="editProduct.currency" class="form-control form-control-sm">
+            </div>
+            <div class="form-group">
+                <label for="categoryName">Category</label>
+                <select name="categoryName" required [(ngModel)]="editProduct.categoryName" [formControl]='categorySelected' class="form-select form-select-sm">
+                    <option *ngFor="let category of categories" [value]="category.name">
+                        {{ category.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Product Picture </span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" accept="image/*" name="ProductImage" (change)="onProductImageChange($event)" class="custom-file-input">
+                    <label class="custom-file-label">
+                        <span [hidden]="!fileName">{{fileName}}</span>
+                        <span [hidden]="fileName">Choose File</span>
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" (click)="onUpdateProduct()" [disabled]="editProductForm.invalid" class="btn btn-secondary"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp; Save changes</button>
+</div>
